@@ -163,21 +163,29 @@ To make your PCF control publisher-agnostic and configurable, you should use Dat
 const clientId = context.parameters.envClientId.raw;
 ```
 
-### 2. Attaching the Control to `internalemailaddress` on the User Form
-To display notifications or recipient info directly on the user form, you can attach your PCF control to the `internalemailaddress` field of the `systemuser` entity.
+### 2. Attaching the Control to a Form
+This PCF control can be attached to **any field on any form** in Dataverse. The control supports the following field types:
+- Single Line of Text
+- Email
+- Phone
+- URL
+- Multiple Lines of Text
+- Whole Number
+
+**Important:** The field value itself is not used by the control—it only serves as a placeholder for the control's UI. You can place this control on any entity (User, Account, Contact, custom entities, etc.) based on your requirements.
 
 **Steps:**
-1. Go to **Power Apps** > **Tables** > **System User** > **Forms**.
-2. Edit the main form where you want to show notifications.
-3. Find the `internalemailaddress` field (or add it to the form if not present).
+1. Go to **Power Apps** > **Tables** > Select your desired table (e.g., **System User**, **Account**, **Contact**).
+2. Navigate to **Forms** and edit the form where you want to show notifications.
+3. Find or add a field that matches one of the supported types listed above.
 4. Click the field, then select **Change Control** > **Add Control**.
 5. Choose your PCF control (e.g., `InAppNotification.NotificationControl`).
 6. Configure the control properties as needed (e.g., bind environment variables, set display options).
 7. Save and publish the form.
 
 **Result:**
-- The control will appear on the user form, showing notifications and recipient info linked to the user's internal email address.
-- You can use this to target notifications to specific users or display relevant info in context.
+- The control will appear on the form, showing all in-app notifications for the current environment.
+- Users can view, create, and manage notifications directly from any form where the control is placed.
 
 ## Prerequisites: Outlook DL Selection & Graph API Access
 

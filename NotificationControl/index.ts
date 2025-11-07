@@ -60,7 +60,7 @@ export class NotificationControl implements ComponentFramework.StandardControl<I
         }
         // Pass only manifest-defined props to NotificationList
         const props = {
-            internalemailaddress: context.parameters.internalemailaddress.raw || "",
+            fieldValue: context.parameters.fieldValue.raw || "",
             notifications: notificationRows,
         };
         // Wrap NotificationList with NotificationProvider for global state
