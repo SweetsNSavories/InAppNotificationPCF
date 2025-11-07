@@ -175,17 +175,50 @@ This PCF control can be attached to **any field on any form** in Dataverse. The 
 **Important:** The field value itself is not used by the control—it only serves as a placeholder for the control's UI. You can place this control on any entity (User, Account, Contact, custom entities, etc.) based on your requirements.
 
 **Steps:**
-1. Go to **Power Apps** > **Tables** > Select your desired table (e.g., **System User**, **Account**, **Contact**).
-2. Navigate to **Forms** and edit the form where you want to show notifications.
-3. Find or add a field that matches one of the supported types listed above.
-4. Click the field, then select **Change Control** > **Add Control**.
-5. Choose your PCF control (e.g., `InAppNotification.NotificationControl`).
-6. Configure the control properties as needed (e.g., bind environment variables, set display options).
-7. Save and publish the form.
+
+1. **Navigate to the Form Editor**
+   - Go to **Power Apps Maker Portal** (make.powerapps.com)
+   - Select **Tables** from the left navigation
+   - Choose your desired table (e.g., **User**, **Account**, **Contact**)
+   - Click on **Forms** tab
+   - Select and edit the form where you want to add notifications
+
+2. **Add or Select a Field**
+   - Find an existing field that matches one of the supported types (Text, Email, Phone, URL, Multiple Lines, Whole Number)
+   - Or add a new field to the form if needed
+   - Click on the field to select it
+
+3. **Add the Custom Control**
+   - With the field selected, click **+ Component** in the right panel
+   - Or right-click the field and select **Properties** > **Components** tab
+   - Click **+ Component**
+   - Search for and select **NotificationControl**
+   - The control will appear in the Components list
+
+4. **Configure Control Properties**
+   - **Label**: Set a custom label (e.g., "Notifications")
+   - **Hide label**: Check this to hide the field label (recommended for cleaner UI)
+   - **Form field width**: Set to desired column width (default: 1 column)
+   - **Show component on**: Select platforms (Web, Mobile, Tablet)
+   - Click **Done**
+
+5. **Set as Primary Control (Optional)**
+   - In the Components section, you'll see both the default field control and NotificationControl
+   - You can make NotificationControl the primary control for better visibility
+   - Or keep both and configure display preferences
+
+6. **Save and Publish**
+   - Click **Save** to save your changes
+   - Click **Publish** to make the control available to users
+   - The control will now appear on the form when users access it
+
+![Control Configuration](images/control-configuration.png)
+*Example: NotificationControl configured on Primary Email field of User form*
 
 **Result:**
-- The control will appear on the form, showing all in-app notifications for the current environment.
-- Users can view, create, and manage notifications directly from any form where the control is placed.
+- The control will appear on the form, showing all in-app notifications for the current environment
+- Users can view, create, and manage notifications directly from any form where the control is placed
+- The control displays with a "New Notification" button and list of existing notifications grouped by title/body
 
 ## Prerequisites: Outlook DL Selection & Graph API Access
 
@@ -317,6 +350,38 @@ This approach is especially useful for Customer Service and Omnichannel environm
 ---
 
 For more details, see the [Microsoft Docs: Use environment variables in Dataverse](https://learn.microsoft.com/power-apps/maker/data-platform/environment-variables), [Add PCF controls to forms](https://learn.microsoft.com/power-apps/developer/component-framework/add-custom-controls-forms-views), [Microsoft Docs: Register an app with Azure AD](https://learn.microsoft.com/azure/active-directory/develop/quickstart-register-app), and [MSAL.js configuration options](https://learn.microsoft.com/azure/active-directory/develop/msal-js-initializing-client-applications).
+
+## Configuration Screenshots
+
+### Control Configuration in Maker Portal
+When configuring the control on a form field, you'll see options to customize its appearance and behavior:
+
+![Control Configuration](images/control-configuration.png)
+
+**Key Configuration Options:**
+- **Field Selection**: Choose any supported field type (Text, Email, Phone, URL, Multiple Lines, Whole Number)
+- **Label**: Customize the display label (e.g., "Notifications")
+- **Hide Label**: Option to hide the field label for a cleaner UI
+- **Platform Support**: Enable for Web, Mobile, and/or Tablet
+- **Form Width**: Set the number of columns the control occupies
+- **Display Options**: Configure visibility, read-only status, and locking
+
+**Recommended Settings:**
+- Hide label: ✅ Checked (provides cleaner look)
+- Form field width: 1 column (or full width based on form layout)
+- Show component on: ✅ Web, ✅ Mobile, ✅ Tablet (enable all platforms)
+
+### Visual Examples
+The control provides three main views:
+
+1. **Notification List**: Displays all notifications grouped by title/body
+   - ![Notification List](images/notification-list.png)
+
+2. **Notification Details**: Shows full notification details with recipient names
+   - ![Notification Details](images/notification-details.png)
+
+3. **Notification Form**: Interface for creating new notifications
+   - ![Notification Form](images/notification-form.png)
 
 ## Developer Notes
 - All components are documented with JSDoc comments for easy understanding.
