@@ -1,7 +1,26 @@
 # In-App Notification PCF Control
 
-## Environment Variables
+> **⚠️ DISCLAIMER**
+> 
+> This control is provided as-is for community use. It has been tested for minimum positive flow scenarios only. **Neither the author nor Microsoft are responsible for any issues arising from the adoption or use of this control.**
+>
+> **Before deploying this control in your organization:**
+> - Conduct a thorough review of the control's code and functionality
+> - Ensure compliance with your organization's security policies
+> - Validate alignment with your organization's design and governance standards
+> - Test extensively in a non-production environment
+> - Perform security and vulnerability assessments as required by your organization
+>
+> **Use at your own risk.** The author and Microsoft provide no warranties, express or implied, regarding the reliability, security, or suitability of this control for your specific use case.
 
+## Overview
+A robust Power Apps Component Framework (PCF) control for Dataverse, designed to deliver, display, and manage in-app notifications. This control supports secure environment variable lookup, publisher-agnostic logic, recipient resolution, and integrates with Microsoft Graph for advanced scenarios. It is built for easy adoption by developers and customers.
+
+**Testing Status:** This control has been tested for minimum positive flow scenarios. Comprehensive testing for edge cases, error handling, and production readiness is recommended before deployment.
+
+For more information about in-app notifications in Dataverse, see [Microsoft Docs: Send in-app notifications within model-driven apps](https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications).
+
+## Environment Variables
 
 To use Microsoft Graph authentication, set the following environment variables in a `.env` file in the project root:
 
@@ -22,13 +41,6 @@ npm run build
 ## Publishing to Gallery
 
 Before publishing, remove any hardcoded secrets and ensure `.env` is excluded from source control.
-
-# InAppNotificationPCF
-
-## Overview
-A robust Power Apps Component Framework (PCF) control for Dataverse, designed to deliver, display, and manage in-app notifications. This control supports secure environment variable lookup, publisher-agnostic logic, recipient resolution, and integrates with Microsoft Graph for advanced scenarios. It is built for easy adoption by developers and customers.
-
-For more information about in-app notifications in Dataverse, see [Microsoft Docs: Send in-app notifications within model-driven apps](https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications).
 
 ## Screenshots
 
@@ -392,8 +404,34 @@ The control provides three main views:
 - Fork the repository and create a pull request for improvements or bug fixes.
 - Please document new components and functions using JSDoc comments and update the README as needed.
 
+## Testing & Production Readiness
+
+**Current Testing Status:** This control has been tested for minimum positive flow scenarios only.
+
+**Before Production Deployment:**
+- Perform comprehensive testing including edge cases, error scenarios, and negative flows
+- Conduct security audits and vulnerability assessments
+- Test with your organization's specific Dataverse configuration and data
+- Validate performance under expected load conditions
+- Ensure compliance with your organization's governance and security policies
+
 ## License
 MIT
+
+## Disclaimer
+
+**USE AT YOUR OWN RISK**
+
+This control is provided as-is without any warranties, express or implied. Neither the author nor Microsoft Corporation are responsible for any issues, damages, or losses arising from the use, deployment, or adaptation of this control.
+
+**Important:**
+- This control has been tested for minimum positive flow scenarios only
+- Organizations must conduct their own thorough review and testing before deployment
+- Ensure the control meets your organization's security, compliance, and design standards
+- No support or maintenance guarantees are provided
+
+**Responsibility:**
+By using this control, you acknowledge that you have reviewed the code, tested it in your environment, and accept full responsibility for its deployment and operation within your organization.
 
 ---
 
