@@ -2,7 +2,7 @@
 
 > **⚠️ DISCLAIMER**
 > 
-> This control is provided as-is for community use. It has been tested for minimum positive flow scenarios only. **Neither the author nor Microsoft are responsible for any issues arising from the adoption or use of this control.**
+> This control is provided as-is for community use. It has been tested for minimum positive flow scenarios only. **The author and Microsoft provide no warranties, express or implied, regarding the reliability, security, or suitability of this control for your specific use case.**
 >
 > **Before deploying this control in your organization:**
 > - Conduct a thorough review of the control's code and functionality
@@ -10,9 +10,7 @@
 > - Validate alignment with your organization's design and governance standards
 > - Test extensively in a non-production environment
 > - Perform security and vulnerability assessments as required by your organization
->
-> **Use at your own risk.** The author and Microsoft provide no warranties, express or implied, regarding the reliability, security, or suitability of this control for your specific use case.
-
+> 
 ## Overview
 A robust Power Apps Component Framework (PCF) control for Dataverse, designed to deliver, display, and manage in-app notifications. This control supports secure environment variable lookup, publisher-agnostic logic, recipient resolution, and integrates with Microsoft Graph for advanced scenarios. It is built for easy adoption by developers and customers.
 
