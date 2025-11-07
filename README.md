@@ -353,38 +353,6 @@ This approach is especially useful for Customer Service and Omnichannel environm
 
 For more details, see the [Microsoft Docs: Use environment variables in Dataverse](https://learn.microsoft.com/power-apps/maker/data-platform/environment-variables), [Add PCF controls to forms](https://learn.microsoft.com/power-apps/developer/component-framework/add-custom-controls-forms-views), [Microsoft Docs: Register an app with Azure AD](https://learn.microsoft.com/azure/active-directory/develop/quickstart-register-app), and [MSAL.js configuration options](https://learn.microsoft.com/azure/active-directory/develop/msal-js-initializing-client-applications).
 
-## Configuration Screenshots
-
-### Control Configuration in Maker Portal
-When configuring the control on a form field, you'll see options to customize its appearance and behavior:
-
-![Control Configuration](images/control-configuration.png)
-
-**Key Configuration Options:**
-- **Field Selection**: Choose any supported field type (Text, Email, Phone, URL, Multiple Lines, Whole Number)
-- **Label**: Customize the display label (e.g., "Notifications")
-- **Hide Label**: Option to hide the field label for a cleaner UI
-- **Platform Support**: Enable for Web, Mobile, and/or Tablet
-- **Form Width**: Set the number of columns the control occupies
-- **Display Options**: Configure visibility, read-only status, and locking
-
-**Recommended Settings:**
-- Hide label: ✅ Checked (provides cleaner look)
-- Form field width: 1 column (or full width based on form layout)
-- Show component on: ✅ Web, ✅ Mobile, ✅ Tablet (enable all platforms)
-
-### Visual Examples
-The control provides three main views:
-
-1. **Notification List**: Displays all notifications grouped by title/body
-   - ![Notification List](images/notification-list.png)
-
-2. **Notification Details**: Shows full notification details with recipient names
-   - ![Notification Details](images/notification-details.png)
-
-3. **Notification Form**: Interface for creating new notifications
-   - ![Notification Form](images/notification-form.png)
-
 ## Developer Notes
 - All components are documented with JSDoc comments for easy understanding.
 - Error handling and fallback logic are implemented for robust user experience.
