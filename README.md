@@ -30,6 +30,20 @@ A robust Power Apps Component Framework (PCF) control for Dataverse, designed to
 
 For more information about in-app notifications in Dataverse, see [Microsoft Docs: Send in-app notifications within model-driven apps](https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications).
 
+## Screenshots
+
+### Notification List View
+![Notification List](images/notification-list.png)
+*Sent notifications grouped by title and body, showing count and recipient access.*
+
+### Notification Details View
+![Notification Details](images/notification-details.png)
+*Detail view with graceful fallback for missing recipients.*
+
+### Create Notification Form
+![Notification Form](images/notification-form.png)
+*Comprehensive form with multiple recipient selection options: System Users, Teams, Queues, and Outlook DLs.*
+
 ## Features
 - **Notification Delivery:** Send notifications to users or groups in Dataverse.
 - **Recipient Resolution:** Fetch and display recipient names using systemuser IDs.
@@ -78,8 +92,14 @@ NotificationControl/
   - `context`: Dataverse context for environment variable lookup and authentication.
 - **Key Functions:**
   - Handles user input, MSAL authentication, and notification submission.
+- **Features:**
+  - Multiple recipient selection options: System Users, Teams, Queues, and Outlook DLs
+  - Required fields: Title and Body
+  - Optional settings: Icon Type (Info, Success, Error, Warning) and Notification Type (Toast, Banner)
 - **Adoption:**
   - Use as the entry point for users to create and send notifications. Integrates with Microsoft Graph for advanced scenarios.
+  
+![Notification Form Example](images/notification-form.png)
 
 ### NotificationList.tsx
 - **Purpose:** Displays a list of notifications and allows navigation to detail view. Notifications are grouped by title and body for efficiency.
