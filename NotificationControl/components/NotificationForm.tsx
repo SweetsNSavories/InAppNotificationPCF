@@ -94,11 +94,8 @@ const NotificationForm: React.FC<NotificationFormProps> = ({ context, onBack }) 
 	const resolveTeamSuggestions = async (filter: string): Promise<ITag[]> => {
 		if (!filter) return [];
 		// Query Dataverse for teams matching filter, always return name and id
-		const result = await context.webAPI.retrieveMultipleRecords(
-			"team",
-			`?$select=teamid,name&$filter=contains(tolower(name),'${filter.toLowerCase()}')`
-		);
-		return (result.entities as { teamid: string; name: string }[]).map(t => ({ key: t.teamid, name: t.name }));
+		const results = await searchTeams(filter, context);
+		return results.map((t: { key: string; name: string }) => ({ key: t.key, name: t.name }));
 	};
 
 	const resolveQueueSuggestions = async (filter: string): Promise<ITag[]> => {
