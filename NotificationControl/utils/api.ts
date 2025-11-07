@@ -153,21 +153,21 @@ export async function getSystemUserIdsByObjectIds(objectIds: string[], context: 
 // Async search for system users
 export async function searchSystemUsers(query: string, context: NotificationContext): Promise<{ key: string; name: string }[]> {
     if (!context.webAPI?.retrieveMultipleRecords) return [];
-    const result = await context.webAPI.retrieveMultipleRecords("systemuser", `?$select=systemuserid,fullname&$filter=substringof('${query}',fullname) and isdisabled eq false`, 5);
+    const result = await context.webAPI.retrieveMultipleRecords("systemuser", `?$select=systemuserid,fullname&$filter=contains(fullname,'${query}') and isdisabled eq false`, 5);
     return (result.entities as { systemuserid: string; fullname: string }[]).map(u => ({ key: u.systemuserid, name: u.fullname }));
 }
 
 // Async search for teams
 export async function searchTeams(query: string, context: NotificationContext): Promise<{ key: string; name: string }[]> {
     if (!context.webAPI?.retrieveMultipleRecords) return [];
-    const result = await context.webAPI.retrieveMultipleRecords("team", `?$select=teamid,name&$filter=substringof('${query}',name)`, 5);
+    const result = await context.webAPI.retrieveMultipleRecords("team", `?$select=teamid,name&$filter=contains(name,'${query}')`, 5);
     return (result.entities as { teamid: string; name: string }[]).map(t => ({ key: t.teamid, name: t.name }));
 }
 
 // Async search for queues
 export async function searchQueues(query: string, context: NotificationContext): Promise<{ key: string; name: string }[]> {
     if (!context.webAPI?.retrieveMultipleRecords) return [];
-    const result = await context.webAPI.retrieveMultipleRecords("queue", `?$select=queueid,name&$filter=substringof('${query}',name)`, 5);
+    const result = await context.webAPI.retrieveMultipleRecords("queue", `?$select=queueid,name&$filter=contains(name,'${query}')`, 5);
     return (result.entities as { queueid: string; name: string }[]).map(q => ({ key: q.queueid, name: q.name }));
 }
 
