@@ -18,17 +18,6 @@ A robust Power Apps Component Framework (PCF) control for Dataverse, designed to
 
 For more information about in-app notifications in Dataverse, see [Microsoft Docs: Send in-app notifications within model-driven apps](https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/send-in-app-notifications).
 
-## Environment Variables
-
-To use Microsoft Graph authentication, set the following environment variables in a `.env` file in the project root:
-
-```env
-InAppNotif_App_Tenant_Id=your-tenant-id-here
-InAppNotif_App_Client_Id=your-client-id-here
-```
-
-You can copy `.env.example` to `.env` and fill in your values.
-
 ## Build & Run
 
 ```bash
@@ -147,21 +136,39 @@ NotificationControl/
 ## Prerequisites: Environment Variables & Attaching the Control
 
 ### 1. Environment Variables Setup
-To make your PCF control publisher-agnostic and configurable, you should use Dataverse environment variables. These allow you to store configuration values (such as Azure AD app registration details, notification settings, or API endpoints) outside your code.
 
-**Steps:**
-- Go to Power Platform Admin Center or your Dataverse environment.
-- Navigate to **Solutions** > your solution > **Environment Variables**.
-- Create environment variables for:
-  - Azure AD Client ID (for MSAL/Graph integration)
-  - Notification settings (e.g., default DL, sender, etc.)
-  - Any other config your control needs
-- Reference these variables in your PCF control using the Dataverse WebAPI or context object.
+**Important:** This control uses **Dataverse environment variables** (not local `.env` files) to store configuration values like Azure AD app registration details for Microsoft Graph integration.
 
-**Example:**
+**Required Environment Variables:**
+You must create the following environment variables in your Dataverse organization:
+
+1. **`InAppNotif_App_Tenant_Id`** - Your Azure AD Tenant ID
+2. **`InAppNotif_App_Client_Id`** - Your Azure AD App Registration Client ID (for Microsoft Graph/MSAL authentication)
+
+**How to Create Environment Variables in Dataverse:**
+
+1. Go to **Power Apps Maker Portal** (make.powerapps.com)
+2. Select **Solutions** from the left navigation
+3. Open your solution (or create a new one)
+4. Click **New** > **More** > **Environment variable**
+5. Create each variable:
+   - **Display Name**: `InAppNotif App Tenant Id` (or similar)
+   - **Name**: `InAppNotif_App_Tenant_Id`
+   - **Data Type**: Text
+   - **Default Value**: Your Azure AD Tenant ID
+   - Repeat for `InAppNotif_App_Client_Id`
+
+**How the Control Uses These Variables:**
+
+The control reads these environment variables at runtime using the Dataverse WebAPI:
+
 ```typescript
-const clientId = context.parameters.envClientId.raw;
+// Example from api.ts
+const clientId = await getEnvironmentVariable("InAppNotif_App_Client_Id", context);
+const tenantId = await getEnvironmentVariable("InAppNotif_App_Tenant_Id", context);
 ```
+
+This approach makes the control **publisher-agnostic** and **easy to configure** across different environments without modifying code.
 
 ### 2. Attaching the Control to a Form
 This PCF control can be attached to **any field on any form** in Dataverse. The control supports the following field types:
