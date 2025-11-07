@@ -33,28 +33,10 @@ You can copy `.env.example` to `.env` and fill in your values.
 
 ## Build & Run
 
-```
+```bash
 npm install
 npm run build
 ```
-
-## Publishing to Gallery
-
-Before publishing, remove any hardcoded secrets and ensure `.env` is excluded from source control.
-
-## Screenshots
-
-### Notification List View
-![Notification List](images/notification-list.png)
-*Sent notifications grouped by title and body, showing count and recipient access.*
-
-### Notification Details View
-![Notification Details](images/notification-details.png)
-*Detail view with graceful fallback for missing recipients.*
-
-### Create Notification Form
-![Notification Form](images/notification-form.png)
-*Comprehensive form with multiple recipient selection options: System Users, Teams, Queues, and Outlook DLs.*
 
 ## Features
 - **Notification Delivery:** Send notifications to users or groups in Dataverse.
@@ -86,6 +68,22 @@ NotificationControl/
 ```
 
 ## Component Details & Usage
+
+### NotificationList.tsx
+- **Purpose:** Displays a list of notifications and allows navigation to detail view. Notifications are grouped by title and body for efficiency.
+- **Props:**
+  - `notifications`: Array of notification objects.
+  - `onSelect`: Handler to select a notification for detail view.
+- **Key Features:**
+  - **Grouping:** Notifications are grouped by title and body because the same notification is sent separately to each recipient in Dataverse. This prevents duplicate entries in the list view.
+  - **Lazy Loading:** Recipients are loaded on-demand (lazy loaded) when you click to view details, reducing initial load time and improving performance.
+  - **Date Filtering:** Only notifications from the last 7-14 days are loaded to keep the list manageable and avoid costly aggregation queries on large datasets.
+- **Adoption:**
+  - Use to provide users with an overview of all notifications. Passes context and props to child components.
+
+![Notification List View](images/notification-list.png)
+*Sent notifications grouped by title and body, showing count and recipient access.*
+
 ### NotificationDetails.tsx
 - **Purpose:** Displays the details of a notification, including title, body, icon, type, and recipient information.
 - **Props:**
@@ -97,6 +95,9 @@ NotificationControl/
   - `fetchNames`: Fetches recipient names from Dataverse using systemuser IDs. Handles missing recipients gracefully by showing "No recipient assigned".
 - **Adoption:**
   - Use in detail view to show notification info and recipient names. Handles all edge cases for missing or undefined recipients.
+
+![Notification Details View](images/notification-details.png)
+*Detail view with graceful fallback for missing recipients.*
 
 ### NotificationForm.tsx
 - **Purpose:** Main form for creating and sending notifications. Centralizes environment variable and authentication logic.
@@ -111,19 +112,8 @@ NotificationControl/
 - **Adoption:**
   - Use as the entry point for users to create and send notifications. Integrates with Microsoft Graph for advanced scenarios.
   
-![Notification Form Example](images/notification-form.png)
-
-### NotificationList.tsx
-- **Purpose:** Displays a list of notifications and allows navigation to detail view. Notifications are grouped by title and body for efficiency.
-- **Props:**
-  - `notifications`: Array of notification objects.
-  - `onSelect`: Handler to select a notification for detail view.
-- **Key Features:**
-  - **Grouping:** Notifications are grouped by title and body because the same notification is sent separately to each recipient in Dataverse. This prevents duplicate entries in the list view.
-  - **Lazy Loading:** Recipients are loaded on-demand (lazy loaded) when you click to view details, reducing initial load time and improving performance.
-  - **Date Filtering:** Only notifications from the last 7-14 days are loaded to keep the list manageable and avoid costly aggregation queries on large datasets.
-- **Adoption:**
-  - Use to provide users with an overview of all notifications. Passes context and props to child components.
+![Create Notification Form](images/notification-form.png)
+*Comprehensive form with multiple recipient selection options: System Users, Teams, Queues, and Outlook DLs.*
 
 ### NotificationContext.tsx
 - **Purpose:** Provides global notification state and actions to components via React context.
