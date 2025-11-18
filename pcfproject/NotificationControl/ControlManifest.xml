@@ -1,0 +1,25 @@
+<!-- PCF Control Manifest -->
+<manifest xmlns="http://schemas.microsoft.com/PowerApps/2016/ControlManifest">
+	<control namespace="InAppNotification" constructor="NotificationControl" version="1.0.0">
+		<displayName>In-App Notification Control</displayName>
+		<description>Send and view notifications for users, teams, DLs, queues.</description>
+		<resources>
+			<code path="index.ts" order="1" />
+		</resources>
+		<properties>
+			<property name="initialFilter" displayName="Initial Filter" type="SingleLine.Text" usage="bound" />
+			<property name="viewMode" displayName="View Mode" type="Enum" usage="bound">
+				<option value="all" />
+				<option value="sent" />
+				<option value="drafts" />
+			</property>
+			<property name="internalemailaddress" displayName="Internal Email Address" type="SingleLine.Email" usage="bound" />
+		</properties>
+		<datasets>
+			<dataset name="notifications" displayName="Notifications" />
+		</datasets>
+		<feature-usage>
+			<uses-feature name="WebAPI" required="true" />
+		</feature-usage>
+	</control>
+</manifest>

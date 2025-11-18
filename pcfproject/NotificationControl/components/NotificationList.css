@@ -1,0 +1,34 @@
+.notification-form-btn-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.systemuser-container {
+    margin-top: 12px;
+}
+.systemuser-textbox {
+    width: 100%;
+}
+.notification-back-btn {
+    margin-top: 16px;
+}
+.notification-list-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+.notification-recipients-box {
+    margin-top: 8px;
+    padding: 8px;
+    background: #f3f2f1;
+    border-radius: 4px;
+}
+
+.notification-recipients-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    padding-left: 16px;
+}
+.notification-list-container {
+    padding: 16px;
+}

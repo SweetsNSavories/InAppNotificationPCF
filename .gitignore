@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Build outputs
+pcfproject/out/
+pcfproject/obj/
+
+# Generated files
+pcfproject/NotificationControl/generated/
+
+# Azurite storage emulator files
+__azurite_db_*.json
+__blobstorage__/
+
+# VS Code
+.vscode/
+
+# Environment files
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
